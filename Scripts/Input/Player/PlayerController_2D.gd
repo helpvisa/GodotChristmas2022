@@ -8,7 +8,6 @@ func _ready():
 	# store current position
 	positionLastTick = global_transform.origin
 	currentPosition = global_transform.origin
-	print(animator)
 
 func _process(_delta):
 	animationHandler()
@@ -126,7 +125,7 @@ var positionLastTick = Vector2()
 # state dictionary containing player state info
 var states = {
 	"jumped": false,
-	"midair": false,
+	"midair": true,
 	"landed": false,
 	"walking": false,
 }

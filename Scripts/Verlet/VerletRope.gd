@@ -2,8 +2,10 @@ extends Node2D
 
 
 # variable declarations
-export var firstPinned = true
-export var lastPinned = true
+export var startFirstPinned = true
+export var startLastPinned = true
+onready var firstPinned = startFirstPinned
+onready var lastPinned = startLastPinned
 export var startingPosition: Vector2 = Vector2(0,0)
 export var offsetDirection: Vector2 = Vector2(0,1)
 export var pinnedSlack = 1.8
@@ -14,6 +16,8 @@ export var totalNodes: int = 30
 
 export var gravity: Vector2 = Vector2(0, 980)
 export var friction: float = 0
+export var airResistance: float = 1
+export var simpleCollision: bool = false
 
 export var ropeColour: Color = Color(1,1,1,1)
 export(Array, Texture) var ropeTextures
@@ -37,6 +41,7 @@ func _ready():
 		var newNode = {"currentPosition": Vector2(), "oldPosition": Vector2(), "collisions": [], "isTouching": false}
 		newNode.currentPosition = startingPosition
 		newNode.currentPosition += (offsetDirection) * (nodeDistance * i)
+		newNode.oldPosition = newNode.currentPosition
 		nodes.push_back(newNode)
 	
 	# create line renderer as child
@@ -63,8 +68,21 @@ func _physics_process(delta):
 	snapshot_collisions()
 	for i in iterations:
 		apply_constraints()
-		resolve_collisions_complex()
+		if simpleCollision:
+			resolve_collisions_simple()
+		else:
+			resolve_collisions_complex()
 	update_line()
+	
+	# check if pins have been released and emit signal if yes
+	if (startFirstPinned and !firstPinned):
+		print("pinReleased")
+		emit_signal("pinReleased")
+		startFirstPinned = false
+	if (startLastPinned and !lastPinned):
+		print("pinReleased")
+		emit_signal("pinReleased")
+		startLastPinned = false
 
 
 ##################
@@ -75,9 +93,9 @@ func simulate(delta):
 		var temp: Vector2 = nodes[i].currentPosition
 		var amountMoved = 0
 		if (nodes[i].isTouching):
-			amountMoved = ((nodes[i].currentPosition - nodes[i].oldPosition) * friction) + (gravity * delta * delta)
+			amountMoved = (((nodes[i].currentPosition - nodes[i].oldPosition) * airResistance) + (gravity * delta * delta)) * friction
 		else:
-			amountMoved = (nodes[i].currentPosition - nodes[i].oldPosition) + (gravity * delta * delta)
+			amountMoved = ((nodes[i].currentPosition - nodes[i].oldPosition) * airResistance) + (gravity * delta * delta)
 		nodes[i].currentPosition += amountMoved
 		nodes[i].oldPosition = temp
 
@@ -202,3 +220,6 @@ func update_line():
 		if animIndex > ropeTextures.size() - 1:
 			animIndex = 0
 		lineRenderer.set_texture(ropeTextures[animIndex])
+
+# signals
+signal pinReleased

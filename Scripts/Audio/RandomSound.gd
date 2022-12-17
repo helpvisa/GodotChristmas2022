@@ -11,6 +11,12 @@ func _on_Sound_Triggered():
 	currentSound = sounds[index]
 	stream = currentSound
 
+func _on_Sound_Triggered_Play():
+	var index:int = randi() % sounds.size()
+	currentSound = sounds[index]
+	stream = currentSound
+	play()
+
 #####################
 # variable declaration
 export(Array, AudioStream) var sounds = [] 

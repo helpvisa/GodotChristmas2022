@@ -7,10 +7,8 @@ func _ready():
 	# find player node
 	player = get_tree().get_root().find_node(playerName, true, false)
 	# connect player node to this inputmanager
-	self.connect("sendInput", player, "parseExternalInput")
-	
-	if managerStates.controllingPlayer:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if (player):
+		self.connect("sendInput", player, "parseExternalInput")
 
 
 # process input and send this info to the player controller
