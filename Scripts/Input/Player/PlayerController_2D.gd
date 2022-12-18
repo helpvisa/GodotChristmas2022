@@ -27,7 +27,7 @@ func _physics_process(delta):
 		
 		# reset coyote timer
 		coyoteTimer = 0
-		if (states.landed):
+		if (states.waiting):
 			playerInput = Vector2()
 		
 		# update current velocity based on inputs, full ground influence
@@ -46,6 +46,7 @@ func _physics_process(delta):
 	if states.jumped and (is_on_floor() or coyoteTimer < coyoteTime):
 		currentVelocity.y = -jumpHeight
 		states.midair = true
+		states.waiting = false
 		emit_signal("jumped")
 	
 	# apply gravity (perpendicular to floor to stop sliding)
@@ -70,17 +71,22 @@ func parseExternalInput(extInputs, extStates):
 	playerInput = inputs.movement
 	if extStates.justJumped:
 		states.jumped = true
-	if inputs.movement != Vector2.ZERO:
+	if inputs.movement != Vector2.ZERO and !states.waiting:
 		states.walking = true
 
 func animationHandler():
 	# handle animation state
 	if (is_on_floor()):
-		if (states.landed):
+		if (states.landed or states.waiting):
+			states.landed = false
+			if !states.waiting:
+				emit_signal("landed")
+				states.waiting = true
+			
 			animator.play("player_landed")
 			yield(animator, "animation_finished")
-			emit_signal("landed")
-			states.landed = false
+			
+			states.waiting = false
 		elif (states.walking):
 			animator.play("player_walk")
 		else:
@@ -129,6 +135,7 @@ var states = {
 	"midair": true,
 	"landed": false,
 	"walking": false,
+	"waiting": false,
 }
 
 # acquire animator
