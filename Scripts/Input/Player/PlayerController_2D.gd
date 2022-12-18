@@ -79,6 +79,7 @@ func animationHandler():
 		if (states.landed):
 			animator.play("player_landed")
 			yield(animator, "animation_finished")
+			emit_signal("landed")
 			states.landed = false
 		elif (states.walking):
 			animator.play("player_walk")
@@ -136,3 +137,4 @@ onready var sprite = $Sprite
 
 # signal states
 signal jumped
+signal landed

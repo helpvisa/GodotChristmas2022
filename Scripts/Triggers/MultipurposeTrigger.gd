@@ -19,7 +19,6 @@ func _on_body_entered(body):
 	if (!alreadyTriggered or !oneShot):
 		match function:
 			FUNC.RELEASE_ROPE_PINS:
-				print('released')
 				releaseAllPins()
 	
 	alreadyTriggered = true

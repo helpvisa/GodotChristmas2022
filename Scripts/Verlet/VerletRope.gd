@@ -76,11 +76,9 @@ func _physics_process(delta):
 	
 	# check if pins have been released and emit signal if yes
 	if (startFirstPinned and !firstPinned):
-		print("pinReleased")
 		emit_signal("pinReleased")
 		startFirstPinned = false
 	if (startLastPinned and !lastPinned):
-		print("pinReleased")
 		emit_signal("pinReleased")
 		startLastPinned = false
 
