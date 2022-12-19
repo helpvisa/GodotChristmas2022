@@ -35,6 +35,9 @@ func _physics_process(delta):
 		# apply ground friction
 		currentVelocity.x -= (currentVelocity.x * groundFriction) * delta
 	else:
+		if (currentVelocity.y > gravity * 2):
+			states.midair = true
+		
 		# increment coyote timer
 		coyoteTimer += 1
 		# update current velocity based on inputs, minimal air influence
@@ -61,7 +64,17 @@ func _physics_process(delta):
 	states.walking = false
 	
 	# move kinematic body
-	currentVelocity = move_and_slide(currentVelocity, Vector2.UP)
+	currentVelocity = move_and_slide(currentVelocity, Vector2.UP, false, 4, 0.785398, false)
+	
+	# get collisions with rigidbodies
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		var body = collision.get_collider()
+		if (body is RigidBody2D):
+			#if collision.get_remainder().y < 0:
+			print(collision.get_angle())
+			if collision.get_angle() > 1:
+				body.apply_impulse(collision.position - body.global_transform.origin, Vector2(playerInput.x * 10 + currentVelocity.x, 0))
 
 
 #######################
@@ -98,9 +111,9 @@ func animationHandler():
 			animator.play("player_fall")
 	
 	# handle sprite flip state
-	if (currentVelocity.x < 0):
+	if (playerInput.x < 0):
 		sprite.flip_h = true
-	else:
+	elif (playerInput.x > 0):
 		sprite.flip_h = false
 
 

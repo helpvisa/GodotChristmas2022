@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Triggers/MultipurposeTrigger.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Decoration/Lights_Rope.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/Lettering/Letters.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -25,6 +26,12 @@ lacunarity = 3.07
 width = 16
 height = 16
 noise = SubResource( 7 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 3, 8 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 2, 3.5 )
 
 [node name="TestScene" type="Node2D"]
 
@@ -76,3 +83,27 @@ texture = SubResource( 8 )
 
 [node name="Rope" parent="Ropes" instance=ExtResource( 3 )]
 position = Vector2( 231, 159 )
+
+[node name="Text" type="Node2D" parent="."]
+
+[node name="M" type="RigidBody2D" parent="Text"]
+position = Vector2( 259, 121 )
+contacts_reported = 3
+contact_monitor = true
+
+[node name="Sprite" type="Sprite" parent="Text/M"]
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Text/M"]
+position = Vector2( -5, 0 )
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Text/M"]
+position = Vector2( 5, 0 )
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Text/M"]
+position = Vector2( 0, -3.5 )
+shape = SubResource( 10 )

@@ -189,6 +189,20 @@ tracks/2/keys = {
 "method": "_on_Sound_Triggered"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("StepEmission")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.12 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_trigger_Emission"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 6.5, 7 )
@@ -197,7 +211,7 @@ extents = Vector2( 6.5, 7 )
 script = ExtResource( 1 )
 moveSpeed = 7
 groundFriction = 8
-jumpHeight = 80
+jumpHeight = 100
 gravity = 3.0
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -232,10 +246,16 @@ volume_db = -8.0
 script = ExtResource( 8 )
 sounds = [ ExtResource( 10 ), ExtResource( 9 ) ]
 
-[node name="EmissionManager" type="Node2D" parent="."]
+[node name="LandEmission" type="Node2D" parent="."]
 position = Vector2( 1, 8 )
 script = ExtResource( 11 )
 emitterResource = "res://Scenes/Particles/Snowpuff.tscn"
 
+[node name="StepEmission" type="Node2D" parent="."]
+position = Vector2( 0, 8 )
+script = ExtResource( 11 )
+emitterResource = "res://Scenes/Particles/StepEmitter.tscn"
+
 [connection signal="jumped" from="." to="Jumps" method="_on_Player_jumped"]
-[connection signal="landed" from="." to="EmissionManager" method="_trigger_Emission"]
+[connection signal="jumped" from="." to="LandEmission" method="_trigger_Emission"]
+[connection signal="landed" from="." to="LandEmission" method="_trigger_Emission"]
