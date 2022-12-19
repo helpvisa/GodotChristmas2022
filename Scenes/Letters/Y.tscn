@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/Lettering/Letters.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 3, 6 )
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 4.52769
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 4.52769
+
+[node name="Y" type="RigidBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+frame = 3
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4.5, -3.5 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2( 4.5, -3.5 )
+shape = SubResource( 11 )

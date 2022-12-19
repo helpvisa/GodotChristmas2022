@@ -1,9 +1,12 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Triggers/MultipurposeTrigger.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Decoration/Lights_Rope.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sprites/Lettering/Letters.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Letters/Y.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Letters/R.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Letters/M.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Letters/E.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -26,12 +29,6 @@ lacunarity = 3.07
 width = 16
 height = 16
 noise = SubResource( 7 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 3, 8 )
-
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 2, 3.5 )
 
 [node name="TestScene" type="Node2D"]
 
@@ -71,7 +68,7 @@ position = Vector2( 90, 249 )
 collision_layer = 0
 collision_mask = 32768
 script = ExtResource( 2 )
-toAffect = [ NodePath("../../Ropes/Rope") ]
+toAffect = [ NodePath("../../Ropes/Rope"), NodePath("../../Text/Rope") ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Area2D"]
 shape = SubResource( 6 )
@@ -85,25 +82,24 @@ texture = SubResource( 8 )
 position = Vector2( 231, 159 )
 
 [node name="Text" type="Node2D" parent="."]
+position = Vector2( 79, 26 )
 
-[node name="M" type="RigidBody2D" parent="Text"]
-position = Vector2( 259, 121 )
-contacts_reported = 3
-contact_monitor = true
+[node name="Rope" parent="Text" instance=ExtResource( 3 )]
+position = Vector2( 271, 21 )
+objectToHang = NodePath("../M2")
+offsetDirection = Vector2( 2, 0.1 )
 
-[node name="Sprite" type="Sprite" parent="Text/M"]
-texture = ExtResource( 4 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 16, 16 )
+[node name="M2" parent="Text" instance=ExtResource( 7 )]
+position = Vector2( 197, 43 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Text/M"]
-position = Vector2( -5, 0 )
-shape = SubResource( 9 )
+[node name="M" parent="Text" instance=ExtResource( 6 )]
+position = Vector2( 177, 126 )
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Text/M"]
-position = Vector2( 5, 0 )
-shape = SubResource( 9 )
+[node name="M3" parent="Text" instance=ExtResource( 5 )]
+position = Vector2( 214, 126 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Text/M"]
-position = Vector2( 0, -3.5 )
-shape = SubResource( 10 )
+[node name="M4" parent="Text" instance=ExtResource( 5 )]
+position = Vector2( 233, 126 )
+
+[node name="M5" parent="Text" instance=ExtResource( 4 )]
+position = Vector2( 252, 127 )
