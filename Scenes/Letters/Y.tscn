@@ -15,8 +15,8 @@ radius = 4.52769
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 2
-vframes = 2
+hframes = 4
+vframes = 4
 frame = 3
 region_rect = Rect2( 0, 0, 16, 16 )
 

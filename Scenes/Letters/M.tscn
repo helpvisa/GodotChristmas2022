@@ -12,8 +12,8 @@ extents = Vector2( 2, 3.5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 2
-vframes = 2
+hframes = 4
+vframes = 4
 region_rect = Rect2( 0, 0, 16, 16 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Triggers/MultipurposeTrigger.gd" type="Script" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://Scenes/Letters/R.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Letters/M.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Letters/E.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Letters/C.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Letters/I.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Letters/H.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Letters/S.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Letters/T.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Letters/A.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -33,7 +39,7 @@ noise = SubResource( 7 )
 [node name="TestScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 200, 212 )
+position = Vector2( 28, 203 )
 collision_layer = 32769
 
 [node name="Colliders" type="Node2D" parent="."]
@@ -68,7 +74,7 @@ position = Vector2( 90, 249 )
 collision_layer = 0
 collision_mask = 32768
 script = ExtResource( 2 )
-toAffect = [ NodePath("../../Ropes/Rope"), NodePath("../../Text/Rope") ]
+toAffect = [ NodePath("../../Ropes/Rope") ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Area2D"]
 shape = SubResource( 6 )
@@ -84,22 +90,44 @@ position = Vector2( 231, 159 )
 [node name="Text" type="Node2D" parent="."]
 position = Vector2( 79, 26 )
 
-[node name="Rope" parent="Text" instance=ExtResource( 3 )]
-position = Vector2( 271, 21 )
-objectToHang = NodePath("../M2")
-offsetDirection = Vector2( 2, 0.1 )
-
-[node name="M2" parent="Text" instance=ExtResource( 7 )]
-position = Vector2( 197, 43 )
-
 [node name="M" parent="Text" instance=ExtResource( 6 )]
-position = Vector2( 177, 126 )
+position = Vector2( 26, 45 )
 
-[node name="M3" parent="Text" instance=ExtResource( 5 )]
-position = Vector2( 214, 126 )
+[node name="E" parent="Text" instance=ExtResource( 7 )]
+position = Vector2( 46, 45 )
 
-[node name="M4" parent="Text" instance=ExtResource( 5 )]
-position = Vector2( 233, 126 )
+[node name="R" parent="Text" instance=ExtResource( 5 )]
+position = Vector2( 67, 44 )
 
-[node name="M5" parent="Text" instance=ExtResource( 4 )]
-position = Vector2( 252, 127 )
+[node name="R2" parent="Text" instance=ExtResource( 5 )]
+position = Vector2( 88, 45 )
+
+[node name="Y" parent="Text" instance=ExtResource( 4 )]
+position = Vector2( 108, 45 )
+
+[node name="C" parent="Text" instance=ExtResource( 8 )]
+position = Vector2( 67, 76 )
+
+[node name="H" parent="Text" instance=ExtResource( 10 )]
+position = Vector2( 87, 76 )
+
+[node name="R3" parent="Text" instance=ExtResource( 5 )]
+position = Vector2( 106, 76 )
+
+[node name="I" parent="Text" instance=ExtResource( 9 )]
+position = Vector2( 124, 77 )
+
+[node name="S" parent="Text" instance=ExtResource( 11 )]
+position = Vector2( 144, 76 )
+
+[node name="T" parent="Text" instance=ExtResource( 12 )]
+position = Vector2( 163, 78 )
+
+[node name="M2" parent="Text" instance=ExtResource( 6 )]
+position = Vector2( 184, 77 )
+
+[node name="A" parent="Text" instance=ExtResource( 13 )]
+position = Vector2( 206, 77 )
+
+[node name="S2" parent="Text" instance=ExtResource( 11 )]
+position = Vector2( 227, 76 )
