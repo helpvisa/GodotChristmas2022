@@ -24,7 +24,7 @@ window/size/height=270
 window/size/test_width=2560
 window/size/test_height=1440
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [gui]
 

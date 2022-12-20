@@ -64,7 +64,7 @@ func _physics_process(delta):
 	states.walking = false
 	
 	# move kinematic body
-	currentVelocity = move_and_slide(currentVelocity, Vector2.UP, false, 4, 0.785398, false)
+	currentVelocity = move_and_slide(currentVelocity, Vector2.UP, true, 4, 0.785398, false)
 	
 	# get collisions with rigidbodies
 	for i in get_slide_count():

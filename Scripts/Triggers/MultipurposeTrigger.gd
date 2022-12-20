@@ -1,7 +1,7 @@
 extends Node
 
 # Declare enumerator
-enum FUNC {RELEASE_ROPE_PINS}
+enum FUNC {RELEASE_ROPE_PINS, RELEASE_ROPE_PINS_TIMED}
 
 # Declare variables
 # which objects this trigger affects
@@ -20,6 +20,8 @@ func _on_body_entered(body):
 		match function:
 			FUNC.RELEASE_ROPE_PINS:
 				releaseAllPins()
+			FUNC.RELEASE_ROPE_PINS_TIMED:
+				releaseAllPinsTimed()
 	
 	alreadyTriggered = true
 
@@ -30,3 +32,17 @@ func releaseAllPins():
 		if (obj.nodes):
 			obj.lastPinned = false
 			obj.firstPinned = false
+
+func releaseAllPinsTimed():
+	for node in toAffect:
+		var obj = get_node(node)
+		if (obj.nodes):
+			obj.lastPinned = false
+			obj.firstPinned = false
+		# now wait until next release
+		var t = Timer.new()
+		t.set_wait_time(0.2)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")

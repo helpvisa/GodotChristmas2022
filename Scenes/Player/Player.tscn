@@ -211,7 +211,7 @@ extents = Vector2( 6.5, 7 )
 script = ExtResource( 1 )
 moveSpeed = 7
 groundFriction = 8
-jumpHeight = 100
+jumpHeight = 120
 gravity = 3.0
 
 [node name="Sprite" type="Sprite" parent="."]
