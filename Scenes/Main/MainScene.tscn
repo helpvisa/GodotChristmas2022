@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scripts/Triggers/MultipurposeTrigger.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Letters/M.tscn" type="PackedScene" id=2]
@@ -16,13 +16,26 @@
 [ext_resource path="res://Scenes/Letters/I.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Letters/H.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Particles/Snowfall.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Decoration/Tree.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Decoration/Tree_02.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Decoration/Gift_B.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Decoration/Gift_A.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Decoration/Gift_C.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Decoration/Hill.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 2 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 119, 5.25 )
 
 [node name="MainScene" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -2.0
+autoplay = true
 
 [node name="Ropes" type="Node2D" parent="."]
 
@@ -117,11 +130,6 @@ objectToHang = NodePath("../../Text/S2")
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ropes"]
-stream = ExtResource( 10 )
-volume_db = -12.0
-autoplay = true
-
 [node name="Text" type="Node2D" parent="."]
 position = Vector2( 79, 26 )
 
@@ -171,7 +179,7 @@ position = Vector2( -109, -50 )
 position = Vector2( 304, 126 )
 
 [node name="LetterFall" type="Area2D" parent="Triggers"]
-position = Vector2( -77, -11 )
+position = Vector2( -75, -11 )
 collision_layer = 0
 collision_mask = 128
 script = ExtResource( 1 )
@@ -179,6 +187,7 @@ toAffect = [ NodePath("../../Ropes/Rope"), NodePath("../../Ropes/Rope2"), NodePa
 function = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/LetterFall"]
+position = Vector2( 3, 9 )
 shape = SubResource( 1 )
 
 [node name="PlayerDeactivate" type="Area2D" parent="Triggers"]
@@ -190,6 +199,7 @@ player = NodePath("../../Player")
 function = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/PlayerDeactivate"]
+position = Vector2( 5, 9 )
 shape = SubResource( 1 )
 
 [node name="CollisionEnable" type="Area2D" parent="Triggers"]
@@ -202,6 +212,9 @@ function = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/CollisionEnable"]
 position = Vector2( -184, -4.75 )
 shape = SubResource( 2 )
+
+[node name="Button" parent="Triggers" instance=ExtResource( 23 )]
+position = Vector2( -72, 2 )
 
 [node name="Player" parent="." instance=ExtResource( 11 )]
 position = Vector2( 121, -125 )
@@ -217,3 +230,72 @@ tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 65535, 0, 131072, 15, 0, 131074, 131071, 0, 131072, 65551, 0, 131074, 196607, 0, 131072, 131087, 0, 131074, 262143, 0, 131072, 196623, 0, 131074, 327679, 0, 131072, 262159, 0, 131074, 393215, 0, 131072, 327695, 0, 131074, 458751, 0, 131072, 393231, 0, 131074, 524287, 0, 131072, 458767, 0, 131074, 589823, 0, 131072, 524288, 0, 2, 524289, 0, 2, 524290, 0, 2, 524291, 0, 2, 524292, 0, 2, 524293, 0, 2, 524294, 0, 2, 524295, 0, 2, 524296, 0, 2, 524297, 0, 2, 524298, 0, 2, 524299, 0, 2, 524300, 0, 2, 524301, 0, 2, 524302, 0, 2, 524303, 0, 131074 )
+
+[node name="Trees" type="Node2D" parent="Environment"]
+
+[node name="Tree3" parent="Environment/Trees" instance=ExtResource( 17 )]
+position = Vector2( 188, 146 )
+z_index = -5
+flip_h = true
+
+[node name="Tree4" parent="Environment/Trees" instance=ExtResource( 17 )]
+position = Vector2( 181, 161 )
+z_index = -5
+
+[node name="Tree5" parent="Environment/Trees" instance=ExtResource( 17 )]
+position = Vector2( 53, 146 )
+z_index = -5
+flip_h = true
+
+[node name="Tree6" parent="Environment/Trees" instance=ExtResource( 17 )]
+position = Vector2( 60, 161 )
+z_index = -5
+
+[node name="Tree_02" parent="Environment/Trees" instance=ExtResource( 18 )]
+position = Vector2( 210, 133 )
+z_index = -5
+
+[node name="Tree_03" parent="Environment/Trees" instance=ExtResource( 18 )]
+position = Vector2( 30, 133 )
+z_index = -5
+flip_h = true
+
+[node name="Gifts" type="Node2D" parent="Environment"]
+
+[node name="Gift_A" parent="Environment/Gifts" instance=ExtResource( 20 )]
+position = Vector2( 43, 128 )
+z_index = -2
+
+[node name="Gift_A2" parent="Environment/Gifts" instance=ExtResource( 20 )]
+position = Vector2( 219, 128 )
+z_index = -2
+
+[node name="Gift_A3" parent="Environment/Gifts" instance=ExtResource( 20 )]
+position = Vector2( 207, 128 )
+z_index = -2
+flip_h = true
+
+[node name="Gift_B" parent="Environment/Gifts" instance=ExtResource( 19 )]
+position = Vector2( 34, 128 )
+z_index = -2
+
+[node name="Gift_B2" parent="Environment/Gifts" instance=ExtResource( 21 )]
+position = Vector2( 198, 128 )
+z_index = -2
+
+[node name="Hills" type="Node2D" parent="Environment"]
+
+[node name="Hill" parent="Environment/Hills" instance=ExtResource( 22 )]
+position = Vector2( 16, 128 )
+z_index = -10
+
+[node name="Hill2" parent="Environment/Hills" instance=ExtResource( 22 )]
+position = Vector2( 53, 134 )
+z_index = -10
+flip_h = true
+
+[node name="Hill3" parent="Environment/Hills" instance=ExtResource( 22 )]
+position = Vector2( 194, 134 )
+scale = Vector2( 3, 3 )
+z_index = -10
+flip_h = true

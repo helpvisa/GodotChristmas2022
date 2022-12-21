@@ -5,7 +5,8 @@ enum FUNC {
 	RELEASE_ROPE_PINS,
 	RELEASE_ROPE_PINS_TIMED,
 	SET_PLAYER_COLLISION,
-	DEACTIVATE_PLAYER_TEMP
+	DEACTIVATE_PLAYER_TEMP,
+	DEPRESS_BUTTON
 	}
 
 # Declare variables
@@ -32,6 +33,8 @@ func _on_body_entered(body):
 				setPlayerCollision()
 			FUNC.DEACTIVATE_PLAYER_TEMP:
 				deactivePlayerTemp()
+			FUNC.DEPRESS_BUTTON:
+				depressButton()
 	
 	alreadyTriggered = true
 
@@ -45,17 +48,18 @@ func releaseAllPins():
 
 func releaseAllPinsTimed():
 	for node in toAffect:
-		var obj = get_node(node)
-		if (obj.nodes):
-			obj.lastPinned = false
-			obj.firstPinned = false
-		# now wait until next release
-		var t = Timer.new()
-		t.set_wait_time(0.2)
-		t.set_one_shot(true)
-		self.add_child(t)
-		t.start()
-		yield(t, "timeout")
+		if node:
+			var obj = get_node(node)
+			if (obj.nodes):
+				obj.lastPinned = false
+				obj.firstPinned = false
+			# now wait until next release
+			var t = Timer.new()
+			t.set_wait_time(0.2)
+			t.set_one_shot(true)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
 
 func setPlayerCollision():
 	if player:
@@ -73,3 +77,9 @@ func deactivePlayerTemp():
 		t.start()
 		yield(t, "timeout")
 		p.playerIsActive = true
+
+func depressButton():
+	for node in toAffect:
+		if node:
+			var btn = get_node(node)
+			btn.frame = 1
