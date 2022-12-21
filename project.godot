@@ -19,8 +19,8 @@ InputManager2d="*res://Scripts/Input/InputManager_2D.gd"
 
 [display]
 
-window/size/width=480
-window/size/height=270
+window/size/width=240
+window/size/height=135
 window/size/test_width=2560
 window/size/test_height=1440
 window/stretch/mode="viewport"

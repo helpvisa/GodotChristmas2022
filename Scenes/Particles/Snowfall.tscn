@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Curve" id=1]
+min_value = -20.0
+max_value = 20.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.0991379, 4.36364 ), 0.0, 0.0, 0, 0, Vector2( 0.283046, -5.96364 ), 0.0, 0.0, 0, 0, Vector2( 0.501437, 3.34545 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.581818 ), 0.0, 0.0, 0, 0 ]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+position = Vector2( 120, -30 )
+amount = 1000
+lifetime = 20.0
+preprocess = 30.0
+emission_shape = 2
+emission_rect_extents = Vector2( 160, 2 )
+direction = Vector2( 0.3, 1 )
+spread = 30.0
+gravity = Vector2( 0, 2 )
+initial_velocity = 10.0
+linear_accel = 1.0
+linear_accel_curve = SubResource( 1 )

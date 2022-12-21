@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Triggers/MultipurposeTrigger.gd" type="Script" id=2]
@@ -14,145 +14,154 @@
 [ext_resource path="res://Scenes/Letters/T.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Letters/A.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Sprites/Environment/EnvTiles.tres" type="TileSet" id=14]
+[ext_resource path="res://SFX/Music/amen.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="TestScene" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 28, 203 )
-collision_layer = 32769
-
 [node name="Ropes" type="Node2D" parent="."]
 
 [node name="Rope" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 77, -41 )
+position = Vector2( 73, -29 )
 objectToHang = NodePath("../../Text/M")
 offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.2
 simpleCollision = true
 
 [node name="Rope2" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 101, -41 )
+position = Vector2( 97, -29 )
 objectToHang = NodePath("../../Text/E")
-nodeDistance = 6.7
+nodeDistance = 3.2
 simpleCollision = true
 
 [node name="Rope3" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 125, -41 )
+position = Vector2( 121, -29 )
 objectToHang = NodePath("../../Text/R")
 offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.2
 simpleCollision = true
 
 [node name="Rope4" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 149, -41 )
+position = Vector2( 145, -29 )
 objectToHang = NodePath("../../Text/R2")
-nodeDistance = 6.7
+nodeDistance = 3.2
 simpleCollision = true
 
 [node name="Rope5" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 173, -41 )
+position = Vector2( 169, -29 )
 objectToHang = NodePath("../../Text/Y")
 offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.2
 simpleCollision = true
 
 [node name="Rope6" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 221, -41 )
+position = Vector2( 25, -5 )
 objectToHang = NodePath("../../Text/C")
-nodeDistance = 6.7
+nodeDistance = 3.0
 simpleCollision = true
 
 [node name="Rope7" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 245, -41 )
+position = Vector2( 49, -5 )
 objectToHang = NodePath("../../Text/H")
 offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.0
 simpleCollision = true
 
 [node name="Rope8" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 269, -41 )
+position = Vector2( 73, -5 )
 objectToHang = NodePath("../../Text/R3")
-nodeDistance = 6.7
+nodeDistance = 3.0
 simpleCollision = true
 
 [node name="Rope9" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 293, -41 )
+position = Vector2( 97, -5 )
 objectToHang = NodePath("../../Text/I")
 offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.0
 simpleCollision = true
 
 [node name="Rope10" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 317, -41 )
+position = Vector2( 121, -5 )
 objectToHang = NodePath("../../Text/S")
-nodeDistance = 6.7
+nodeDistance = 3.0
 simpleCollision = true
 
 [node name="Rope11" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 341, -41 )
+position = Vector2( 145, -5 )
 objectToHang = NodePath("../../Text/T")
 offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.0
 simpleCollision = true
 
 [node name="Rope12" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 365, -41 )
+position = Vector2( 169, -5 )
 objectToHang = NodePath("../../Text/M2")
-nodeDistance = 6.7
+nodeDistance = 3.0
 simpleCollision = true
 
 [node name="Rope13" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 389, -41 )
+position = Vector2( 193, -5 )
 objectToHang = NodePath("../../Text/A")
 offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.0
 simpleCollision = true
 
 [node name="Rope14" parent="Ropes" instance=ExtResource( 3 )]
-position = Vector2( 413, -41 )
+position = Vector2( 217, -5 )
 objectToHang = NodePath("../../Text/S2")
-nodeDistance = 6.7
+nodeDistance = 3.0
 simpleCollision = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ropes"]
+stream = ExtResource( 15 )
+volume_db = -12.0
+autoplay = true
 
 [node name="Text" type="Node2D" parent="."]
 position = Vector2( 79, 26 )
 
 [node name="M" parent="Text" instance=ExtResource( 6 )]
-position = Vector2( 26, 45 )
+position = Vector2( -109, -50 )
 
 [node name="E" parent="Text" instance=ExtResource( 7 )]
-position = Vector2( 46, 45 )
+position = Vector2( -109, -50 )
 
 [node name="R" parent="Text" instance=ExtResource( 5 )]
-position = Vector2( 67, 44 )
+position = Vector2( -109, -50 )
 
 [node name="R2" parent="Text" instance=ExtResource( 5 )]
-position = Vector2( 88, 45 )
+position = Vector2( -109, -50 )
 
 [node name="Y" parent="Text" instance=ExtResource( 4 )]
-position = Vector2( 108, 45 )
+position = Vector2( -109, -50 )
 
 [node name="C" parent="Text" instance=ExtResource( 8 )]
-position = Vector2( 67, 76 )
+position = Vector2( -109, -50 )
 
 [node name="H" parent="Text" instance=ExtResource( 10 )]
-position = Vector2( 87, 76 )
+position = Vector2( -109, -50 )
 
 [node name="R3" parent="Text" instance=ExtResource( 5 )]
-position = Vector2( 106, 76 )
+position = Vector2( -109, -50 )
 
 [node name="I" parent="Text" instance=ExtResource( 9 )]
-position = Vector2( 124, 77 )
+position = Vector2( -109, -50 )
 
 [node name="S" parent="Text" instance=ExtResource( 11 )]
-position = Vector2( 144, 76 )
+position = Vector2( -109, -50 )
 
 [node name="T" parent="Text" instance=ExtResource( 12 )]
-position = Vector2( 163, 78 )
+position = Vector2( -109, -50 )
 
 [node name="M2" parent="Text" instance=ExtResource( 6 )]
-position = Vector2( 184, 77 )
+position = Vector2( -109, -50 )
 
 [node name="A" parent="Text" instance=ExtResource( 13 )]
-position = Vector2( 206, 77 )
+position = Vector2( -109, -50 )
 
 [node name="S2" parent="Text" instance=ExtResource( 11 )]
-position = Vector2( 227, 76 )
+position = Vector2( -109, -50 )
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -160,15 +169,20 @@ position = Vector2( 227, 76 )
 tile_set = ExtResource( 14 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 65535, 0, 131072, 30, 0, 131074, 131071, 0, 131072, 65566, 0, 131074, 196607, 0, 131072, 131102, 0, 131074, 262143, 0, 131072, 196638, 0, 131074, 327679, 0, 131072, 262174, 0, 131074, 393215, 0, 131072, 327710, 0, 131074, 458751, 0, 131072, 393246, 0, 131074, 524287, 0, 131072, 458782, 0, 131074, 589823, 0, 131072, 524318, 0, 131074, 655359, 0, 131072, 589854, 0, 131074, 720895, 0, 131072, 655390, 0, 131074, 786431, 0, 131072, 720926, 0, 131074, 851967, 0, 131072, 786462, 0, 131074, 917503, 0, 131072, 851998, 0, 131074, 983039, 0, 131072, 917508, 0, 2, 917509, 0, 2, 917510, 0, 2, 917511, 0, 2, 917512, 0, 2, 917513, 0, 2, 917534, 0, 131074, 1048575, 0, 131072, 983044, 0, 131073, 983045, 0, 65536, 983046, 0, 65536, 983047, 0, 65536, 983048, 0, 65536, 983049, 0, 65538, 983070, 0, 131074, 1048576, 0, 0, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048580, 0, 65536, 1048581, 0, 65536, 1048582, 0, 65536, 1048583, 0, 65536, 1048584, 0, 65536, 1048585, 0, 65536, 1048586, 0, 0, 1048587, 0, 1, 1048588, 0, 2, 1048589, 0, 2, 1048590, 0, 2, 1048591, 0, 2, 1048592, 0, 2, 1048593, 0, 2, 1048594, 0, 2, 1048595, 0, 2, 1048596, 0, 2, 1048597, 0, 2, 1048598, 0, 2, 1048599, 0, 2, 1048600, 0, 2, 1048601, 0, 2, 1048602, 0, 2, 1048603, 0, 2, 1048604, 0, 2, 1048605, 0, 2 )
+tile_data = PoolIntArray( 65535, 0, 131072, 15, 0, 131074, 131071, 0, 131072, 65551, 0, 131074, 196607, 0, 131072, 131087, 0, 131074, 262143, 0, 131072, 196623, 0, 131074, 327679, 0, 131072, 262159, 0, 131074, 393215, 0, 131072, 327695, 0, 131074, 458751, 0, 131072, 393231, 0, 131074, 524287, 0, 131072, 458767, 0, 131074, 589823, 0, 131072, 524288, 0, 2, 524289, 0, 2, 524290, 0, 2, 524291, 0, 2, 524292, 0, 2, 524293, 0, 2, 524294, 0, 2, 524295, 0, 2, 524296, 0, 2, 524297, 0, 2, 524298, 0, 2, 524299, 0, 2, 524300, 0, 2, 524301, 0, 2, 524302, 0, 2, 524303, 0, 131074 )
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 146, 212 )
+position = Vector2( 304, 126 )
 
 [node name="Area2D" type="Area2D" parent="Node2D"]
+position = Vector2( -77, -11 )
 script = ExtResource( 2 )
 toAffect = [ NodePath("../../Ropes/Rope"), NodePath("../../Ropes/Rope2"), NodePath("../../Ropes/Rope3"), NodePath("../../Ropes/Rope4"), NodePath("../../Ropes/Rope5"), NodePath("../../Ropes/Rope6"), NodePath("../../Ropes/Rope7"), NodePath("../../Ropes/Rope8"), NodePath("../../Ropes/Rope9"), NodePath("../../Ropes/Rope10"), NodePath("../../Ropes/Rope11"), NodePath("../../Ropes/Rope12"), NodePath("../../Ropes/Rope13"), NodePath("../../Ropes/Rope14") ]
 function = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
 shape = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 12, -145 )
+collision_layer = 32769

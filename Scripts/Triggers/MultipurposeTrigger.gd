@@ -1,11 +1,17 @@
 extends Node
 
 # Declare enumerator
-enum FUNC {RELEASE_ROPE_PINS, RELEASE_ROPE_PINS_TIMED}
+enum FUNC {
+	RELEASE_ROPE_PINS,
+	RELEASE_ROPE_PINS_TIMED,
+	SET_PLAYER_COLLISION,
+	DEACTIVATE_PLAYER_TEMP
+	}
 
 # Declare variables
 # which objects this trigger affects
 export(Array, NodePath) var toAffect
+export(NodePath) var player
 export(FUNC) var function = FUNC.RELEASE_ROPE_PINS
 export(bool) var oneShot = true
 var alreadyTriggered: bool = false
@@ -22,6 +28,10 @@ func _on_body_entered(body):
 				releaseAllPins()
 			FUNC.RELEASE_ROPE_PINS_TIMED:
 				releaseAllPinsTimed()
+			FUNC.SET_PLAYER_COLLISION:
+				setPlayerCollision()
+			FUNC.DEACTIVATE_PLAYER_TEMP:
+				deactivePlayerTemp()
 	
 	alreadyTriggered = true
 
@@ -46,3 +56,20 @@ func releaseAllPinsTimed():
 		self.add_child(t)
 		t.start()
 		yield(t, "timeout")
+
+func setPlayerCollision():
+	if player:
+		var p = get_node(player)
+		p.set_collision_layer_bit(0, true)
+
+func deactivePlayerTemp():
+	if player:
+		var p = get_node(player)
+		p.playerIsActive = false
+		var t = Timer.new()
+		t.set_wait_time(4.3)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
+		p.playerIsActive = true

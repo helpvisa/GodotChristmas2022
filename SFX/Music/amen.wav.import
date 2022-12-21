@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/amen.wav-93d8f9b4e44fb04fe90cbf036be84c3b.sample"
+
+[deps]
+
+source_file="res://SFX/Music/amen.wav"
+dest_files=[ "res://.import/amen.wav-93d8f9b4e44fb04fe90cbf036be84c3b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=true
+compress/mode=0

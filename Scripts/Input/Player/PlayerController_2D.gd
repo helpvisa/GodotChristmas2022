@@ -74,18 +74,19 @@ func _physics_process(delta):
 			if currentVelocity.y >= 3 and collision.get_angle() <= 1.55:
 				body.apply_impulse(collision.position - body.global_transform.origin, Vector2.DOWN * weight * gravity)
 			elif currentVelocity.y < 3 and collision.get_angle() > 1.55:
-				body.apply_impulse(collision.position - body.global_transform.origin, Vector2(playerInput.x * 10 + currentVelocity.x, 0))
+				body.apply_impulse(collision.position - body.global_transform.origin, Vector2(playerInput.x * 15, 0) - collision.normal * 10)
 
 
 #######################
 # function declarations
 func parseExternalInput(extInputs, extStates):
 	inputs = extInputs
-	playerInput = inputs.movement
-	if extStates.justJumped:
-		states.jumped = true
-	if inputs.movement != Vector2.ZERO and !states.waiting:
-		states.walking = true
+	if playerIsActive:
+		playerInput = inputs.movement
+		if extStates.justJumped:
+			states.jumped = true
+		if inputs.movement != Vector2.ZERO and !states.waiting:
+			states.walking = true
 
 func animationHandler():
 	# handle animation state
@@ -143,6 +144,7 @@ var currentPosition = Vector2()
 var positionLastTick = Vector2()
 
 # state dictionary containing player state info
+var playerIsActive = true
 var states = {
 	"jumped": false,
 	"midair": true,

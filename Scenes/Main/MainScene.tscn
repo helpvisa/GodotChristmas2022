@@ -1,0 +1,219 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Scripts/Triggers/MultipurposeTrigger.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Letters/M.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Letters/R.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Letters/C.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Letters/Y.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Letters/E.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/Environment/EnvTiles.tres" type="TileSet" id=7]
+[ext_resource path="res://Scenes/Decoration/Lights_Rope.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Letters/T.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SFX/Music/amen.wav" type="AudioStream" id=10]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Letters/S.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Letters/A.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Letters/I.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Letters/H.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Particles/Snowfall.tscn" type="PackedScene" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 119, 5.25 )
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Ropes" type="Node2D" parent="."]
+
+[node name="Rope" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 87, -29 )
+objectToHang = NodePath("../../Text/M")
+offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.2
+simpleCollision = true
+
+[node name="Rope2" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 103, -29 )
+objectToHang = NodePath("../../Text/E")
+nodeDistance = 3.2
+simpleCollision = true
+
+[node name="Rope3" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 119, -29 )
+objectToHang = NodePath("../../Text/R")
+offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.2
+simpleCollision = true
+
+[node name="Rope4" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 135, -29 )
+objectToHang = NodePath("../../Text/R2")
+nodeDistance = 3.2
+simpleCollision = true
+
+[node name="Rope5" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 151, -29 )
+objectToHang = NodePath("../../Text/Y")
+offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.2
+simpleCollision = true
+
+[node name="Rope6" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 55, -5 )
+objectToHang = NodePath("../../Text/C")
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="Rope7" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 71, -5 )
+objectToHang = NodePath("../../Text/H")
+offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="Rope8" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 87, -5 )
+objectToHang = NodePath("../../Text/R3")
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="Rope9" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 103, -5 )
+objectToHang = NodePath("../../Text/I")
+offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="Rope10" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 119, -5 )
+objectToHang = NodePath("../../Text/S")
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="Rope11" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 135, -5 )
+objectToHang = NodePath("../../Text/T")
+offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="Rope12" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 151, -5 )
+objectToHang = NodePath("../../Text/M2")
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="Rope13" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 167, -5 )
+objectToHang = NodePath("../../Text/A")
+offsetDirection = Vector2( -0.3, 0.1 )
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="Rope14" parent="Ropes" instance=ExtResource( 8 )]
+position = Vector2( 183, -5 )
+objectToHang = NodePath("../../Text/S2")
+nodeDistance = 3.0
+simpleCollision = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ropes"]
+stream = ExtResource( 10 )
+volume_db = -12.0
+autoplay = true
+
+[node name="Text" type="Node2D" parent="."]
+position = Vector2( 79, 26 )
+
+[node name="M" parent="Text" instance=ExtResource( 2 )]
+position = Vector2( -109, -50 )
+
+[node name="E" parent="Text" instance=ExtResource( 6 )]
+position = Vector2( -109, -50 )
+
+[node name="R" parent="Text" instance=ExtResource( 3 )]
+position = Vector2( -109, -50 )
+
+[node name="R2" parent="Text" instance=ExtResource( 3 )]
+position = Vector2( -109, -50 )
+
+[node name="Y" parent="Text" instance=ExtResource( 5 )]
+position = Vector2( -109, -50 )
+
+[node name="C" parent="Text" instance=ExtResource( 4 )]
+position = Vector2( -109, -50 )
+
+[node name="H" parent="Text" instance=ExtResource( 15 )]
+position = Vector2( -109, -50 )
+
+[node name="R3" parent="Text" instance=ExtResource( 3 )]
+position = Vector2( -109, -50 )
+
+[node name="I" parent="Text" instance=ExtResource( 14 )]
+position = Vector2( -109, -50 )
+
+[node name="S" parent="Text" instance=ExtResource( 12 )]
+position = Vector2( -109, -50 )
+
+[node name="T" parent="Text" instance=ExtResource( 9 )]
+position = Vector2( -109, -50 )
+
+[node name="M2" parent="Text" instance=ExtResource( 2 )]
+position = Vector2( -109, -50 )
+
+[node name="A" parent="Text" instance=ExtResource( 13 )]
+position = Vector2( -109, -50 )
+
+[node name="S2" parent="Text" instance=ExtResource( 12 )]
+position = Vector2( -109, -50 )
+
+[node name="Triggers" type="Node2D" parent="."]
+position = Vector2( 304, 126 )
+
+[node name="LetterFall" type="Area2D" parent="Triggers"]
+position = Vector2( -77, -11 )
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 1 )
+toAffect = [ NodePath("../../Ropes/Rope"), NodePath("../../Ropes/Rope2"), NodePath("../../Ropes/Rope3"), NodePath("../../Ropes/Rope4"), NodePath("../../Ropes/Rope5"), NodePath("../../Ropes/Rope6"), NodePath("../../Ropes/Rope7"), NodePath("../../Ropes/Rope8"), NodePath("../../Ropes/Rope9"), NodePath("../../Ropes/Rope10"), NodePath("../../Ropes/Rope11"), NodePath("../../Ropes/Rope12"), NodePath("../../Ropes/Rope13"), NodePath("../../Ropes/Rope14") ]
+function = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/LetterFall"]
+shape = SubResource( 1 )
+
+[node name="PlayerDeactivate" type="Area2D" parent="Triggers"]
+position = Vector2( -77, -11 )
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 1 )
+player = NodePath("../../Player")
+function = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/PlayerDeactivate"]
+shape = SubResource( 1 )
+
+[node name="CollisionEnable" type="Area2D" parent="Triggers"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 1 )
+player = NodePath("../../Player")
+function = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/CollisionEnable"]
+position = Vector2( -184, -4.75 )
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+position = Vector2( 121, -125 )
+collision_layer = 128
+collision_mask = 0
+
+[node name="CPUParticles2D" parent="." instance=ExtResource( 16 )]
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Environment"]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 65535, 0, 131072, 15, 0, 131074, 131071, 0, 131072, 65551, 0, 131074, 196607, 0, 131072, 131087, 0, 131074, 262143, 0, 131072, 196623, 0, 131074, 327679, 0, 131072, 262159, 0, 131074, 393215, 0, 131072, 327695, 0, 131074, 458751, 0, 131072, 393231, 0, 131074, 524287, 0, 131072, 458767, 0, 131074, 589823, 0, 131072, 524288, 0, 2, 524289, 0, 2, 524290, 0, 2, 524291, 0, 2, 524292, 0, 2, 524293, 0, 2, 524294, 0, 2, 524295, 0, 2, 524296, 0, 2, 524297, 0, 2, 524298, 0, 2, 524299, 0, 2, 524300, 0, 2, 524301, 0, 2, 524302, 0, 2, 524303, 0, 131074 )
