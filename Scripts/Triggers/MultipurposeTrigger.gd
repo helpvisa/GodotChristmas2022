@@ -6,13 +6,16 @@ enum FUNC {
 	RELEASE_ROPE_PINS_TIMED,
 	SET_PLAYER_COLLISION,
 	DEACTIVATE_PLAYER_TEMP,
-	DEPRESS_BUTTON
+	DEPRESS_BUTTON,
+	CHANGE_PHYSICS_MATERIAL
 	}
 
 # Declare variables
 # which objects this trigger affects
 export(Array, NodePath) var toAffect
 export(NodePath) var player
+export(String) var physicsResource
+var physMat = null
 export(FUNC) var function = FUNC.RELEASE_ROPE_PINS
 export(bool) var oneShot = true
 var alreadyTriggered: bool = false
@@ -20,6 +23,9 @@ var alreadyTriggered: bool = false
 # connect internal signal to our func on ready
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
+	# load material if necessary
+	if physicsResource:
+		physMat = load(physicsResource)
 
 # call our func when body enters
 func _on_body_entered(body):
@@ -35,6 +41,8 @@ func _on_body_entered(body):
 				deactivePlayerTemp()
 			FUNC.DEPRESS_BUTTON:
 				depressButton()
+			FUNC.CHANGE_PHYSICS_MATERIAL:
+				changePhysMat()
 	
 	alreadyTriggered = true
 
@@ -83,3 +91,17 @@ func depressButton():
 		if node:
 			var btn = get_node(node)
 			btn.frame = 1
+
+func changePhysMat():
+	if physMat:
+		var t = Timer.new()
+		t.set_wait_time(4.3)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
+		for node in toAffect:
+			if node:
+				var obj = get_node(node)
+				if obj is RigidBody2D:
+					obj.set_physics_material_override(physMat)

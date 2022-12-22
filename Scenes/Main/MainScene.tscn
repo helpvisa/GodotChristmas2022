@@ -202,6 +202,19 @@ function = 3
 position = Vector2( 5, 9 )
 shape = SubResource( 1 )
 
+[node name="PlayerDeactivate2" type="Area2D" parent="Triggers"]
+position = Vector2( -77, -11 )
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 1 )
+toAffect = [ NodePath("../../Text/M"), NodePath("../../Text/E"), NodePath("../../Text/R"), NodePath("../../Text/R2"), NodePath("../../Text/Y"), NodePath("../../Text/C"), NodePath("../../Text/H"), NodePath("../../Text/R3"), NodePath("../../Text/I"), NodePath("../../Text/S"), NodePath("../../Text/T"), NodePath("../../Text/M2"), NodePath("../../Text/A"), NodePath("../../Text/S2") ]
+physicsResource = "res://Scenes/Letters/PhysMat/LetterPhysMat_NoBounce.tres"
+function = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/PlayerDeactivate2"]
+position = Vector2( 5, 9 )
+shape = SubResource( 1 )
+
 [node name="CollisionEnable" type="Area2D" parent="Triggers"]
 collision_layer = 0
 collision_mask = 128
