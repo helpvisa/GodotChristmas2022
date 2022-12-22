@@ -71,10 +71,10 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var body = collision.get_collider()
 		if (body is RigidBody2D):
-			if currentVelocity.y >= 3 and collision.get_angle() <= 1.55:
-				body.apply_impulse(collision.position - body.global_transform.origin, Vector2.DOWN * weight * gravity)
-			elif currentVelocity.y < 3 and collision.get_angle() > 1.55:
-				body.apply_impulse(collision.position - body.global_transform.origin, Vector2(playerInput.x * 15, 0) - collision.normal * 10)
+			# if currentVelocity.y >= 3 and collision.get_angle() <= 1.55:
+				# body.apply_impulse(collision.position - body.global_transform.origin, Vector2.DOWN * weight * gravity)
+			if currentVelocity.y < 3 and collision.get_angle() > 1.55:
+				body.apply_impulse(collision.position - body.global_transform.origin, Vector2(playerInput.x * 30, 0))
 
 
 #######################
