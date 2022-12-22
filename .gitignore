@@ -1,8 +1,8 @@
-# ignore import flags
-# .import/
-
 # generated from csv files
 *.translation
 
 # export configs
 export_presets.cfg
+
+# ignore build directory
+build/

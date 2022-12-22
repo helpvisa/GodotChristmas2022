@@ -11,6 +11,8 @@ config_version=4
 [application]
 
 config/name="Christmas2022_ForLav"
+run/main_scene="res://Scenes/Main/MainScene.tscn"
+boot_splash/show_image=false
 config/icon="res://icon.png"
 
 [autoload]
@@ -67,6 +69,7 @@ jump={
 common/enable_pause_aware_picking=true
 2d/physics_engine="GodotPhysics"
 3d/physics_engine="GodotPhysics"
+common/physics_interpolation=true
 
 [rendering]
 
