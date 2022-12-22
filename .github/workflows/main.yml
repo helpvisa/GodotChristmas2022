@@ -47,13 +47,13 @@ jobs:
         run: |
           mkdir -v -p build/web
           godot -v --export "HTML5" ./build/web/index.html
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
           name: web
           path: build/web
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
-      - name: Install rsync 📚
+      - name: Install rsync
         run: |
           apt-get update && apt-get install -y rsync
       # - name: Deploy
