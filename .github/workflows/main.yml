@@ -53,9 +53,9 @@ jobs:
           name: web
           path: build/web
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
-      # - name: Install rsync 📚
-      #   run: |
-      #     apt-get update && apt-get install -y rsync
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
       # - name: Deploy
       #   uses: peaceiris/actions-gh-pages@v3
       #   with:
