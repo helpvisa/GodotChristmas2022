@@ -183,7 +183,7 @@ position = Vector2( -75, -11 )
 collision_layer = 0
 collision_mask = 128
 script = ExtResource( 1 )
-toAffect = [ NodePath("../../Ropes/Rope"), NodePath("../../Ropes/Rope2"), NodePath("../../Ropes/Rope3"), NodePath("../../Ropes/Rope4"), NodePath("../../Ropes/Rope5"), NodePath("../../Ropes/Rope6"), NodePath("../../Ropes/Rope7"), NodePath("../../Ropes/Rope8"), NodePath("../../Ropes/Rope9"), NodePath("../../Ropes/Rope10"), NodePath("../../Ropes/Rope11"), NodePath("../../Ropes/Rope12"), NodePath("../../Ropes/Rope13"), NodePath("../../Ropes/Rope14") ]
+toAffect = [ NodePath("../../Text/C"), NodePath("../../Text/H"), NodePath("../../Text/R3"), NodePath("../../Text/I"), NodePath("../../Text/S"), NodePath("../../Text/T"), NodePath("../../Text/M2"), NodePath("../../Text/A"), NodePath("../../Text/S2"), NodePath("../../Text/M"), NodePath("../../Text/E"), NodePath("../../Text/R"), NodePath("../../Text/R2"), NodePath("../../Text/Y") ]
 function = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/LetterFall"]
