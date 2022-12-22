@@ -1,7 +1,7 @@
 name: "godot-ci export"
 
 env:
-  GODOT_VERSION: 3.3.3
+  GODOT_VERSION: 3.5.1
   EXPORT_NAME: godot-christmas-2022
   
 # Controls when the workflow will run
@@ -21,7 +21,7 @@ jobs:
     name: Web Export
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:3.3.3
+      image: barichello/godot-ci:3.5.1
     steps:
       - name: Checkout
         uses: actions/checkout@v2
