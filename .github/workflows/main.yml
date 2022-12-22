@@ -4,7 +4,6 @@ name: CI
 
 env:
   GODOT_VERSION: 3.5.1
-  EXPORT_NAME: godot-christmas-2022
   
 # Controls when the workflow will run
 on:
@@ -47,7 +46,6 @@ jobs:
       - name: Web Build
         run: |
           mkdir -v -p build/web
-          cd $EXPORT_NAME
           godot -v --export "HTML5" ./build/web/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
