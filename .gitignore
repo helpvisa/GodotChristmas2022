@@ -1,5 +1,5 @@
 # ignore import flags
-.import/
+# .import/
 
 # generated from csv files
 *.translation
