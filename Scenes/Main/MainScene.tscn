@@ -39,92 +39,92 @@ autoplay = true
 
 [node name="Ropes" type="Node2D" parent="."]
 
-[node name="Rope" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_M" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 87, -29 )
 objectToHang = NodePath("../../Text/M")
 offsetDirection = Vector2( -0.3, 0.1 )
 nodeDistance = 3.2
 simpleCollision = true
 
-[node name="Rope2" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_E" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 103, -29 )
 objectToHang = NodePath("../../Text/E")
 nodeDistance = 3.2
 simpleCollision = true
 
-[node name="Rope3" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_R" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 119, -29 )
 objectToHang = NodePath("../../Text/R")
 offsetDirection = Vector2( -0.3, 0.1 )
 nodeDistance = 3.2
 simpleCollision = true
 
-[node name="Rope4" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_R2" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 135, -29 )
 objectToHang = NodePath("../../Text/R2")
 nodeDistance = 3.2
 simpleCollision = true
 
-[node name="Rope5" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_Y" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 151, -29 )
 objectToHang = NodePath("../../Text/Y")
 offsetDirection = Vector2( -0.3, 0.1 )
 nodeDistance = 3.2
 simpleCollision = true
 
-[node name="Rope6" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_C" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 55, -5 )
 objectToHang = NodePath("../../Text/C")
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="Rope7" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_H" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 71, -5 )
 objectToHang = NodePath("../../Text/H")
 offsetDirection = Vector2( -0.3, 0.1 )
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="Rope8" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_R3" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 87, -5 )
 objectToHang = NodePath("../../Text/R3")
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="Rope9" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_I" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 103, -5 )
 objectToHang = NodePath("../../Text/I")
 offsetDirection = Vector2( -0.3, 0.1 )
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="Rope10" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_S" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 119, -5 )
 objectToHang = NodePath("../../Text/S")
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="Rope11" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_T" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 135, -5 )
 objectToHang = NodePath("../../Text/T")
 offsetDirection = Vector2( -0.3, 0.1 )
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="Rope12" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_M2" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 151, -5 )
 objectToHang = NodePath("../../Text/M2")
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="Rope13" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_A" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 167, -5 )
 objectToHang = NodePath("../../Text/A")
 offsetDirection = Vector2( -0.3, 0.1 )
 nodeDistance = 3.0
 simpleCollision = true
 
-[node name="Rope14" parent="Ropes" instance=ExtResource( 8 )]
+[node name="Rope_s" parent="Ropes" instance=ExtResource( 8 )]
 position = Vector2( 183, -5 )
 objectToHang = NodePath("../../Text/S2")
 nodeDistance = 3.0
@@ -183,7 +183,7 @@ position = Vector2( -75, -11 )
 collision_layer = 0
 collision_mask = 128
 script = ExtResource( 1 )
-toAffect = [ NodePath("../../Text/C"), NodePath("../../Text/H"), NodePath("../../Text/R3"), NodePath("../../Text/I"), NodePath("../../Text/S"), NodePath("../../Text/T"), NodePath("../../Text/M2"), NodePath("../../Text/A"), NodePath("../../Text/S2"), NodePath("../../Text/M"), NodePath("../../Text/E"), NodePath("../../Text/R"), NodePath("../../Text/R2"), NodePath("../../Text/Y") ]
+toAffect = [ NodePath("../../Ropes/Rope_C"), NodePath("../../Ropes/Rope_H"), NodePath("../../Ropes/Rope_R3"), NodePath("../../Ropes/Rope_I"), NodePath("../../Ropes/Rope_S"), NodePath("../../Ropes/Rope_T"), NodePath("../../Ropes/Rope_M2"), NodePath("../../Ropes/Rope_A"), NodePath("../../Ropes/Rope_s"), NodePath("../../Ropes/Rope_M"), NodePath("../../Ropes/Rope_E"), NodePath("../../Ropes/Rope_R"), NodePath("../../Ropes/Rope_R2"), NodePath("../../Ropes/Rope_Y") ]
 function = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/LetterFall"]
